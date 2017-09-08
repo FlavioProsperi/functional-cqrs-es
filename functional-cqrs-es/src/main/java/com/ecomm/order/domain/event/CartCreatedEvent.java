@@ -2,11 +2,7 @@ package com.ecomm.order.domain.event;
 
 import java.io.Serializable;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
-@AllArgsConstructor
-@Getter
 public class CartCreatedEvent implements EventMessage, Serializable {
 
 	/**
@@ -17,4 +13,26 @@ public class CartCreatedEvent implements EventMessage, Serializable {
 	private String cartId;
 	
 	private String custId;
+	
+	public CartCreatedEvent(){}
+
+	public CartCreatedEvent(String cartId, String custId) {
+		super();
+		this.cartId = cartId;
+		this.custId = custId;
+	}
+
+	public String getCartId() {
+		return cartId;
+	}
+
+	public String getCustId() {
+		return custId;
+	}
+
+	@Override
+	public Object getAggregateIdentifier() {
+		return cartId;
+	}
+	
 }

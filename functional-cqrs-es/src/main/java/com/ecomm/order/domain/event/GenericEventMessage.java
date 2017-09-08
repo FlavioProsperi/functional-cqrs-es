@@ -1,24 +1,31 @@
 /*package com.ecomm.order.domain.event;
 
-import java.time.Instant;
+import java.sql.Timestamp;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 public class GenericEventMessage<T> implements EventMessage<T> {
 
-	private Instant timeStamp;
+	private Timestamp timeStamp;
 	
 	private Long sequence;
 	
 	private Object aggregateIdentifier;
 	
-	private Class aggregateType;
+	private Class<T> type;
 	
 	private T payLoad;
 	
+	public GenericEventMessage(Timestamp timeStamp, Long sequence, Object aggregateIdentifier, Class<T> type,
+			T payLoad) {
+		super();
+		this.timeStamp = timeStamp;
+		this.sequence = sequence;
+		this.aggregateIdentifier = aggregateIdentifier;
+		this.type = type;
+		this.payLoad = payLoad;
+	}
+
 	@Override
-	public Instant getTimeStamp() {
+	public Timestamp getTimeStamp() {
 		return this.timeStamp;
 	}
 
@@ -33,8 +40,8 @@ public class GenericEventMessage<T> implements EventMessage<T> {
 	}
 
 	@Override
-	public Class getAggregateType() {
-		return this.aggregateType;
+	public Class<T> getType() {
+		return this.type;
 	}
 
 	@Override

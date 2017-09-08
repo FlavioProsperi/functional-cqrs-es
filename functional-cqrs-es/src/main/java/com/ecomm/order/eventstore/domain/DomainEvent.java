@@ -9,17 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.TableGenerator;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.id.UUIDGenerator;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
 @Entity(name="domain_event")
 public class DomainEvent {
 
@@ -29,10 +18,7 @@ public class DomainEvent {
 	@Column(name="global_index")
 	private Long globalIndex;
 	
-//	@Id
 	@Column(name="event_identifier", unique=true)
-	/*@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@GeneratedValue(generator="hibernate-uuid",strategy=GenerationType.IDENTITY)*/
 	private String eventIdentifier;
 	
 	@Column(name="pay_load")
@@ -55,5 +41,93 @@ public class DomainEvent {
 	
 	@Column(name="type")
 	private String type;
+	
+	public DomainEvent(){}
+
+	public DomainEvent(Long globalIndex, String eventIdentifier, String payLoad, String payLoadRevision,
+			String payLoadType, Timestamp timeStamp, String aggregateIdentifier, Long sequenceNumber, String type) {
+		super();
+		this.globalIndex = globalIndex;
+		this.eventIdentifier = eventIdentifier;
+		this.payLoad = payLoad;
+		this.payLoadRevision = payLoadRevision;
+		this.payLoadType = payLoadType;
+		this.timeStamp = timeStamp;
+		this.aggregateIdentifier = aggregateIdentifier;
+		this.sequenceNumber = sequenceNumber;
+		this.type = type;
+	}
+
+	public Long getGlobalIndex() {
+		return globalIndex;
+	}
+
+	public void setGlobalIndex(Long globalIndex) {
+		this.globalIndex = globalIndex;
+	}
+
+	public String getEventIdentifier() {
+		return eventIdentifier;
+	}
+
+	public void setEventIdentifier(String eventIdentifier) {
+		this.eventIdentifier = eventIdentifier;
+	}
+
+	public String getPayLoad() {
+		return payLoad;
+	}
+
+	public void setPayLoad(String payLoad) {
+		this.payLoad = payLoad;
+	}
+
+	public String getPayLoadRevision() {
+		return payLoadRevision;
+	}
+
+	public void setPayLoadRevision(String payLoadRevision) {
+		this.payLoadRevision = payLoadRevision;
+	}
+
+	public String getPayLoadType() {
+		return payLoadType;
+	}
+
+	public void setPayLoadType(String payLoadType) {
+		this.payLoadType = payLoadType;
+	}
+
+	public Timestamp getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Timestamp timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
+	public String getAggregateIdentifier() {
+		return aggregateIdentifier;
+	}
+
+	public void setAggregateIdentifier(String aggregateIdentifier) {
+		this.aggregateIdentifier = aggregateIdentifier;
+	}
+
+	public Long getSequenceNumber() {
+		return sequenceNumber;
+	}
+
+	public void setSequenceNumber(Long sequenceNumber) {
+		this.sequenceNumber = sequenceNumber;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 }

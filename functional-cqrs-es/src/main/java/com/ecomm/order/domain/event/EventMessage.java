@@ -1,15 +1,20 @@
 package com.ecomm.order.domain.event;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public interface EventMessage {
 	
-	/*public Instant getTimeStamp();
+	@JsonIgnore
+	public Object getAggregateIdentifier();
+	/*
+	
+	public Timestamp getTimeStamp();
 	
 	public Long getSequence();
 	
 	public Object getAggregateIdentifier();
 	
-	public Class getAggregateType();
+	public Class<T> getType();
 	
-	public T getPayLoad();*/
-}
+	public T getPayLoad();
+*/}

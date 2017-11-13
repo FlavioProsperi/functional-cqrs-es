@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: taskservice
+  cloud:
+    config:
+      uri: http://localhost:8081  
+    stream:
+      bindings:
+       ui_code_factory_channel:
+          destination: ui_code_factory_topic 
+       java_code_factory_channel:
+          destination: java_code_factory_topic
+      
